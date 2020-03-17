@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Http\JsonResponse;
+
 use App\Models\Contact;
 
 class ContactController extends Controller
@@ -99,6 +101,10 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+
+        $contact->delete();
+        
+        return new JsonResponse(true);
     }
 }
